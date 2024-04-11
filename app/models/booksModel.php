@@ -1,5 +1,9 @@
 <?php
 
+namespace Models\BooksModel;
+
+use \PDO;
+
 function findAll(PDO $connexion): array
 {
     $sql = "SELECT *

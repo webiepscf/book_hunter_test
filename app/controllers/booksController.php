@@ -1,9 +1,13 @@
 <?php
 
+namespace Controllers\BooksController;
+
+use \PDO, Models\BooksModel;
+
 function indexAction(PDO $connexion)
 {
     include_once '../app/models/booksModel.php';
-    $books = findAll($connexion);
+    $books = BooksModel\findAll($connexion);
 
     global $content;
     ob_start();
@@ -15,7 +19,7 @@ function indexAction(PDO $connexion)
 function showAction(PDO $connexion, $id)
 {
     include_once '../app/models/booksModel.php';
-    $book = findOneById($connexion, $id);
+    $book = BooksModel\findOneById($connexion, $id);
 
     global $content;
     ob_start();
