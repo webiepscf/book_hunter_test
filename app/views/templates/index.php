@@ -20,7 +20,20 @@
         </div>
     </nav>
     <main class="container row">
-        <?php echo $content ?>
+
+        <div class="col m8">
+            <?php echo $content ?>
+        </div>
+
+        <aside class="col m4">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#">Category 1</a></li>
+                <li><a href="#">Category 2</a></li>
+                <li><a href="#">Category 3</a></li>
+            </ul>
+        </aside>
+
     </main>
     <footer class="page-footer">
         <div class="container">
