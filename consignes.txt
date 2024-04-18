@@ -1,0 +1,8 @@
+Route détails d'une catégorie
+PATTERN: /categoryID=x
+CTRL: categoriesController
+ACTION: show
+
+	h1> nom de catégorie
+	ul>li>a>titre des books
+

@@ -25,3 +25,17 @@ function findOneById(PDO $connexion, int $id): array
     $rs->execute();
     return $rs->fetch(PDO::FETCH_ASSOC);
 }
+
+
+function findAllByCategoryId(PDO $connexion, int $id): array
+{
+    $sql = "SELECT *
+            FROM books
+            WHERE category_id = :id
+            ORDER BY title ASC;";
+
+    $rs = $connexion->prepare($sql);  // RecordsSet
+    $rs->bindValue(':id', $id, PDO::PARAM_INT);
+    $rs->execute();
+    return $rs->fetchAll(PDO::FETCH_ASSOC);
+}
