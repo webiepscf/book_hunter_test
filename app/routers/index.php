@@ -2,7 +2,8 @@
 
 use Controllers\BooksController,
     Controllers\CategoriesController,
-    Controllers\AuthorsController;
+    Controllers\AuthorsController,
+    Controllers\PagesController;
 
 // PATTERN: /?bookID=x
 // CTRL: booksController
@@ -40,9 +41,9 @@ elseif (isset($_GET['books'])) :
     BooksController\indexAction($connexion);
 
 // PATTERN: /
-// CTRL: booksController
-// ACTION: indexAction
+// CTRL: pagesController
+// ACTION: homeAction
 else :
-    include_once '../app/controllers/booksController.php';
-    BooksController\indexAction($connexion);
+    include_once '../app/controllers/pagesController.php';
+    PagesController\homeAction($connexion);
 endif;

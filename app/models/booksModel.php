@@ -4,14 +4,31 @@ namespace Models\BooksModel;
 
 use \PDO;
 
-function findAll(PDO $connexion): array
+function findAll(PDO $connexion, array $params_user = []): array
 {
+    $params_default = [
+        'limit' => 10,
+        'order_by' => 'created_at',
+        'order_direction' => 'DESC',
+        'offset' => 0
+    ];
+    $params = array_merge($params_default, $params_user);
+
     $sql = "SELECT *
             FROM books
-            ORDER BY created_at DESC
-            LIMIT 10;";
+            ORDER BY "
+        . htmlentities($params['order_by'])
+        . " "
+        . htmlentities($params['order_direction'])
+        . "
+            LIMIT :limit
+            OFFSET :offset;";
 
-    return $connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    $rs =  $connexion->prepare($sql);
+    $rs->bindValue(':limit', $params['limit'], PDO::PARAM_INT);
+    $rs->bindValue(':offset', $params['offset'], PDO::PARAM_INT);
+    $rs->execute();
+    return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function findOneById(PDO $connexion, int $id): array
