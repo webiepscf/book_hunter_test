@@ -2,8 +2,4 @@
 
 
 <!-- Liste des books de la catégorie -->
-<ul>
-    <?php foreach ($books as $book) : ?>
-        <li><a href=""><?php echo $book['title']; ?></a></li>
-    <?php endforeach; ?>
-</ul>
+<?php include '../app/views/books/_index.php'; ?>
