@@ -6,6 +6,7 @@ use \PDO;
 
 function findAll(PDO $connexion, array $params_user = []): array
 {
+
     $params_default = [
         'limit' => 10,
         'order_by' => 'created_at',
